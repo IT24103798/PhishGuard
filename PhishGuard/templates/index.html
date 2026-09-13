@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhishGuard | Phishing Awareness Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header><a class="brand" href="#"><span>PG</span> PhishGuard</a><div class="mode"><i></i> Offline rule analysis</div></header>
+  <main>
+    <section class="hero">
+
+      <h1>Catch the warning signs<br>before you click.</h1>
+      <p>Paste a suspicious email or message. PhishGuard identifies explainable red flags without visiting any detected links.</p>
+    </section>
+
+    <section class="analyzer-card">
+      <div class="form-panel">
+        <div class="sample-row"><h2>Message details</h2><button id="sampleButton" class="text-button">Load demo sample</button></div>
+        <label for="sender">Sender address <small>(optional)</small></label>
+        <input id="sender" type="text" placeholder="security@example.com">
+        <label for="subject">Subject <small>(optional)</small></label>
+        <input id="subject" type="text" placeholder="Urgent account alert">
+        <div class="label-row"><label for="message">Email or message</label><small id="count">0 / 15000</small></div>
+        <textarea id="message" maxlength="15000" placeholder="Paste the suspicious content here. Do not paste passwords or other private information."></textarea>
+        <div id="formMessage" role="alert" aria-live="polite"></div>
+        <div class="buttons"><button id="analyzeButton" class="primary">Analyze message</button><button id="clearButton">Clear</button></div>
+      </div>
+
+      <div id="emptyState" class="empty-state"><div class="radar">⌁</div><h2>Ready to inspect</h2><p>Your explainable risk report will appear here.</p></div>
+      <div id="results" class="results" hidden>
+        <div class="risk-summary">
+          <div id="scoreRing" class="score-ring"><strong id="score">0</strong><span>/ 100</span></div>
+          <div><p class="caption">RISK LEVEL</p><h2 id="riskLevel">Low</h2><p id="verdict"></p></div>
+        </div>
+        <h3>Detected red flags <span id="flagCount">0</span></h3>
+        <div id="flagList" class="flag-list"></div>
+        <h3>Recommended safe actions</h3>
+        <ol id="actions"></ol>
+        <p class="disclaimer">This educational rule-based result is not a guarantee. A message can be malicious even when no known indicators are found.</p>
+      </div>
+    </section>
+
+    <section class="knowledge">
+      <article><b>01</b><h2>Check the sender</h2><p>Look beyond the display name and inspect the complete sender domain.</p></article>
+      <article><b>02</b><h2>Pause under pressure</h2><p>Urgency, fear, and rewards are common social-engineering tactics.</p></article>
+      <article><b>03</b><h2>Verify independently</h2><p>Use an official website or trusted contact method instead of message links.</p></article>
+    </section>
+  </main>
+  <footer>PhishGuard is an educational awareness project. It does not open, visit, or scan linked websites.</footer>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
